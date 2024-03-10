@@ -428,6 +428,20 @@ def _resolve_depends_on(input_dict: Dict[str, Any], resolution_data: dict[str, s
     """
     Resolve DependsOn when logical ids get changed when transforming (ex: AWS::Serverless::LayerVersion)
 
+    :param input_dict: Dictionary to resolve DependsOn on
+    :param resolution_data: Data used to resolve DependsOn
+    :return: Resolved dictionary
+    """
+    if "DependsOn" in input_dict:
+        depends_on = input_dict.pop("DependsOn")
+        if isinstance(depends_on, str):
+            input_dict["DependsOn"] = [resolution_data[depends_on]]
+        else:
+            input_dict["DependsOn"] = [resolution_data[d] for d in depends_on]
+
+    return input_dict
+
+
     :param input_dict: Chunk of the template that is attempting to be resolved
     :param resolution_data: Dictionary of the original and changed logical ids
     :return: Modified dictionary with values resolved

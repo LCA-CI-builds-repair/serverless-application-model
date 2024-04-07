@@ -19,10 +19,11 @@ def traverse(
 
     :param input_value: Any primitive type  (dict, array, string etc) whose value might contain a changed value
     :param actions: Method that will be called to actually resolve the function.
-    :return: Modified `input` with values resolved    
+    :return: Modified `input` with values resolved
     """
 
     for action in actions:
+        input_value = action(input_value)
         action.execute(input_value)
 
     if isinstance(input_value, dict):

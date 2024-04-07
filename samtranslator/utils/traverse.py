@@ -16,13 +16,13 @@ def traverse(
     Imagine the input dictionary/list as a tree. We are doing a Pre-Order tree traversal here where we first
     process the root node before going to its children. Dict and Lists are the only two iterable nodes.
     Everything else is a leaf node.
-
     :param input_value: Any primitive type  (dict, array, string etc) whose value might contain a changed value
     :param actions: Method that will be called to actually resolve the function.
     :return: Modified `input` with values resolved    
     """
 
     for action in actions:
+        results.append(action.execute(input_value, **resolution_data))
         action.execute(input_value)
 
     if isinstance(input_value, dict):

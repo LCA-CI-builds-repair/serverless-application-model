@@ -17,12 +17,15 @@ def traverse(
     process the root node before going to its children. Dict and Lists are the only two iterable nodes.
     Everything else is a leaf node.
 
-    :param input_value: Any primitive type  (dict, array, string etc) whose value might contain a changed value
-    :param actions: Method that will be called to actually resolve the function.
-    :return: Modified `input` with values resolved    
-    """
-
-    for action in actions:
+    def resolve_depends_on(self, input_value: Any) -> Any:
+        """
+        Resolves the value of the input_value if it has a "DependsOn" key.
+        """
+        if isinstance(input_value, dict) and "DependsOn" in input_value:
+            depends_on_value = input_value["DependsOn"]
+            # Implement logic to resolve the value of "DependsOn"
+            return input_value
+        return input_value
         action.execute(input_value)
 
     if isinstance(input_value, dict):

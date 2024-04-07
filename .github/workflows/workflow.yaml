@@ -1,14 +1,6 @@
 name: Tests
 
-on:
-  push:
-    branches:
-      - develop
-      - "feat-*"
-  pull_request:
-  workflow_dispatch:
-  merge_group:
-    types: [checks_requested]
+on: push
 
 jobs:
   build:
@@ -18,13 +10,13 @@ jobs:
       fail-fast: false
       matrix:
         os:
-          - ubuntu-latest
+        - ubuntu-latest
         python:
-          - "3.7"
-          - "3.8"
-          - "3.9"
-          - "3.10"
-          - "3.11"
+        - '3.7'
+        - '3.8'
+        - '3.9'
+        - '3.10'
+        - '3.11'
     steps:
     - uses: actions/checkout@v3
     - uses: actions/setup-python@v4

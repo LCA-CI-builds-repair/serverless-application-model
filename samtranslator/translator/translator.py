@@ -421,12 +421,46 @@ def traverse_template_depends_on(input_value: Dict[str, Any], resolution_data: D
     _resolve_depends_on(input_value, resolution_data)
     if isinstance(input_value, dict):
         traverse_dict(input_value, resolution_data)
-    return input_value
 
+return _resolve_depends_on(input_value, resolution_data)
 
 def _resolve_depends_on(input_dict: Dict[str, Any], resolution_data: dict[str, str]) -> Dict[str, Any]:
     """
     Resolve DependsOn when logical ids get changed when transforming (ex: AWS::Serverless::LayerVersion)
+
+    :param input_dict: Input dict with DependsOn value
+    :param resolution_data: Resolution data to use when resolving logical ids
+    :return: Resolved dict with DependsOn value
+    """
+    resolved_dict = {}
+    for key, value in input_dict.items():
+        if key == "DependsOn":
+            resolved_dict[key] = _resolve_depends_on_value(value, resolution_data)
+        else:
+            resolved_dict[key] = value
+    return resolved_dict
+
+
+def _resolve_depends_on_value(value: Any, resolution_data: dict[str, str]) -> Any:
+    """
+    Resolve individual DependsOn value
+
+    :param value: DependsOn value
+    :param resolution_data: Resolution data to use when resolving logical ids
+    :return: Resolved DependsOn value
+    """
+    if isinstance(value, str):
+        if value in resolution_data:
+            return resolution_data[value]
+        else:
+            return value
+    elif isinstance(value, list):
+        return [_resolve_depends_on_value(item, resolution_data) for item in value]
+    elif isinstance(value, dict):
+        return {key: _resolve_depends_on_value(value, resolution_data) for key, value in value.items()}
+    else:
+        return value
+
 
     :param input_dict: Chunk of the template that is attempting to be resolved
     :param resolution_data: Dictionary of the original and changed logical ids

@@ -421,13 +421,8 @@ def traverse_template_depends_on(input_value: Dict[str, Any], resolution_data: D
     _resolve_depends_on(input_value, resolution_data)
     if isinstance(input_value, dict):
         traverse_dict(input_value, resolution_data)
+    # TODO: Remove this once we fix the transform to output the correct DependsOn
     return input_value
-
-
-def _resolve_depends_on(input_dict: Dict[str, Any], resolution_data: dict[str, str]) -> Dict[str, Any]:
-    """
-    Resolve DependsOn when logical ids get changed when transforming (ex: AWS::Serverless::LayerVersion)
-
     :param input_dict: Chunk of the template that is attempting to be resolved
     :param resolution_data: Dictionary of the original and changed logical ids
     :return: Modified dictionary with values resolved

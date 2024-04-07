@@ -21,8 +21,15 @@ def traverse(
     :param actions: Method that will be called to actually resolve the function.
     :return: Modified `input` with values resolved    
     """
+    from typing import Callable
+    from typing import Any
 
-    for action in actions:
+    def resolve(input_value: Any, actions: Callable[..., Any]) -> Any:
+        for action in actions:
+            # Call the action method to resolve the function
+            input_value = action(input_value)
+
+        return input_value
         action.execute(input_value)
 
     if isinstance(input_value, dict):

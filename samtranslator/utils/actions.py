@@ -19,6 +19,10 @@ class ResolveDependsOn(Action):
     def __init__(self, resolution_data: Dict[str, str]):
         """
         Initializes ResolveDependsOn. Where data necessary to resolve execute can be provided.
+        """
+        super().__init__(resolution_data)  # Call the superclass constructor
+
+        self.resolution_data = resolution_data
 
         :param resolution_data: Extra data necessary to resolve execute properly.
         """

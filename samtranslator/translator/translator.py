@@ -421,12 +421,17 @@ def traverse_template_depends_on(input_value: Dict[str, Any], resolution_data: D
     _resolve_depends_on(input_value, resolution_data)
     if isinstance(input_value, dict):
         traverse_dict(input_value, resolution_data)
-    return input_value
-
-
 def _resolve_depends_on(input_dict: Dict[str, Any], resolution_data: dict[str, str]) -> Dict[str, Any]:
-    """
-    Resolve DependsOn when logical ids get changed when transforming (ex: AWS::Serverless::LayerVersion)
+"""
+Resolve DependsOn when logical ids get changed when transforming (ex: AWS::Serverless::LayerVersion)
+"""
+new_input_dict = deepcopy(input_dict)
+for key, value in new_input_dict.items():
+ if isinstance(value, (dict, list)):
+ for sub_key, sub_value in value.items():
+ if key.startswith("DependsOn") and sub_key.isdigit():
+ new_input_dict[key][sub_key] = resolution_data[sub_key]
+ return new_input_dict
 
     :param input_dict: Chunk of the template that is attempting to be resolved
     :param resolution_data: Dictionary of the original and changed logical ids

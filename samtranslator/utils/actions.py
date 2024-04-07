@@ -12,7 +12,6 @@ class Action(ABC):
     def execute(self, template: Dict[str, Any]) -> Dict[str, Any]:
         pass
 
-
 class ResolveDependsOn(Action):
     DependsOn = "DependsOn"
     

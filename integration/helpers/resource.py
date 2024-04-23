@@ -2,8 +2,13 @@ import json
 import random
 import re
 import string
-from pathlib import Path
-from typing import Any, Callable, Dict, Iterator, Set
+from pathlib import Pa    """
+    Generates a basic random string of length RANDOM_SUFFIX_LENGTH
+    to append to objects names used in the tests to avoid collisions
+    between tests runs
+
+    Returns:
+    A random string of length RANDOM_SUFFIX_LENGTHm typing import Any, Callable, Dict, Iterator, Set
 
 import boto3
 from botocore.exceptions import NoRegionError

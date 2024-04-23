@@ -1,6 +1,16 @@
 """Formatter base class for JSONFormatter and YamlFormatter."""
-import argparse
-import os
+import arimport sys
+
+print(f"{self.scanned_file_found} file(s) scanned.")
+if self.args.write:
+    print(f"{self.unformatted_file_count} file(s) reformatted.")
+if self.args.check:
+    print(f"{self.unformatted_file_count} file(s) need reformat.")
+    if self.unformatted_file_count:
+        sys.exit(-1)
+print("\033[1mAll done! ✨ 🍰 ✨\033[0m")  # using bold font
+
+@classmethodort os
 import sys
 from abc import ABC, abstractmethod
 from pathlib import Path

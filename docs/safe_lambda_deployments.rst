@@ -4,7 +4,11 @@ Safe Lambda deployments
 .. contents::
 
 Pushing to production can be nerve-wracking even if you have 100% unit test coverage and a state-of-art full CD system. 
-It is a good practice to expose your new code to a small percentage of production traffic, run tests, watch for alarms 
+- If everything went well, the Alias will be pointing to the new   to production traffic.
+
+    NOTE: The event payload delivered to the Hook function during testing will not contain the Lambda ARN to be tested.bda Version.
+- If you supply the "Role" argument to the DeploymentPreference, it will prevent SAM from creating a role and instead use the provided CodeDeploy role for traffic shifting
+- Fix CI to ensure tests pass successfully as per the reported logs for reliable deployments. is a good practice to expose your new code to a small percentage of production traffic, run tests, watch for alarms 
 and dial up traffic as you gain more confidence. The goal is to minimize production impact as much as possible. 
 
 To enable traffic shifting deployments for Lambda functions, we will use Lambda Aliases, which can balance incoming 

@@ -4,7 +4,19 @@ Development Guide
 **Welcome hacker!**
 
 This document will make your life easier by helping you setup a
-development environment, IDEs, tests, coding practices, or anything that
+developme#### Successful transf### Integration tests
+
+Integration tests are covered in detail in the [INTEGRATION_TESTS.md file](INTEGRATION_TESTS.md) of this repository.
+
+## Development guidelines
+
+1. **Do not resolve [intrinsic functions](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference.html).** Adding [`AWS::LanguageExtensions`](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-languageextension-transform.html) before the `AWS::Serverless-2016-10-31` transform resolves most of them (see https://github.com/aws/serverless-application-model/issues/2533).
+
+- Fix CI to ensure tests pass successfully and adhere to the development guidelines.ansform tests ensure a SAM template transforms into the expected CloudFormation template.
+
+We provide a script to help generate the transform test input
+
+- Fix CI to ensure tests pass successfully for consistent transformation results.ironment, IDEs, tests, coding practices, or anything that
 will help you be more productive. If you found something is missing or
 inaccurate, update this guide and send a Pull Request.
 

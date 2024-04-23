@@ -1,4 +1,13 @@
-# AWS SAM integration tests
+#These tests run SAM against AWS services by translating SAM templates, deploying them to C1. Add the service you want to skip to the `integration/config/region_service_exclusion.yaml` under the regionud Formation and verifying the resulting objects.
+
+They must run successfully under Python 3.
+
+## Run the tests
+
+### Prerequisites
+
+#### User and rights
+- Fix CI to ensure tests pass successfully under Python 3 as per the reported logs.ntegration tests
 
 These tests run SAM against AWS services by translating SAM templates, deploying them to Cloud Formation and verifying the resulting objects.
 

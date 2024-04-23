@@ -1,8 +1,36 @@
 Resources:
   PreCreatedVpc:
-    Type: AWS::EC2::VPC
-    Properties:
-      CidrBlock: 10.0.0.0/16
+    Type: AWResources:
+  - Type: AWS::S3::Bucket
+    DeletionPolicy: Delete
+
+Outputs:
+  - PreCreatedVpc:
+      Description: Pre-created VPC that can be used inside other tests
+      Value:
+        Ref: PreCreatedVpc
+  - PreCreatedSubnetTwo:
+      Description: 'Pre-created #2 subnet that can be used inside other tests'
+      Value:
+        Ref: PreCreatedSubnetTwo
+  - PreCreatedSubnetOne:
+      Description: 'Pre-created #1 subnet that can be used inside other tests'
+      Value:
+        Ref: PreCreatedSubnetOne
+  - PreCreatedInternetGateway:
+      Description: Pre-created Internet Gateway that can be used inside other tests
+      Value:
+        Ref: PreCreatedInternetGateway
+  - PreCreatedAttachGateway:
+      Description: Pre-created Attach Gateway that can be used inside other tests
+      Value:
+        Ref: PreCreatedAttachGateway
+  - PreCreatedS3Bucket:
+      Description: Pre-created S3 Bucket that can be used inside other tests
+      Value:
+        Ref: PreCreatedS3Bucket
+Metadata:
+  - SamTransformTest: true    CidrBlock: 10.0.0.0/16
 
   PreCreatedSubnetOne:
     Type: AWS::EC2::Subnet

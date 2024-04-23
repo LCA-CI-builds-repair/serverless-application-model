@@ -2,7 +2,10 @@
 #
 # setup.py
 #
-# Copyright 2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+# Copyright 2018 Amazon.com, Inc. or its affiliates. All Right        "Topic :: Software Development :: Build Tools",
+        "Topic :: Utilities",
+    ],
+)served.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.

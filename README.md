@@ -1,6 +1,13 @@
 # AWS SAM transform
 
-[![Tests](https://github.com/aws/serverless-application-model/actions/workflows/build.yml/badge.svg)](https://github.com/aws/serverless-application-model/actions/workflows/build.yml)
+[![Tests](https://github.com/aws/serverless-application-model## Contributing
+
+### Setting up development environment
+
+You'll need to have Python 3.7+ installed.
+
+Create a [virtual environment](https://docs.python.org/3/library/venv.html):
+l/badge.svg)](https://github.com/aws/serverless-application-model/actions/workflows/build.yml)
 [![Update schema](https://github.com/aws/serverless-application-model/actions/workflows/schema.yml/badge.svg)](https://github.com/aws/serverless-application-model/actions/workflows/schema.yml)
 [![PyPI](https://img.shields.io/pypi/v/aws-sam-translator?label=PyPI)](https://pypi.org/project/aws-sam-translator/)
 [![PyPI - Python Version](https://img.shields.io/pypi/pyversions/aws-sam-translator?label=Python)](https://pypi.org/project/aws-sam-translator/)

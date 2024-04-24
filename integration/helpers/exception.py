@@ -1,4 +1,6 @@
-from py.error import Error
+fclass StatusCodeError(Error):
+    def __init__(self, message):
+        self.message = message py.error import Error
 
 
 class StatusCodeError(Error):

@@ -6,7 +6,41 @@ from typing import Any
 
 import jsonschema
 
-from samtranslator.internal.deprecation_control import deprecated
+from     def _process_error(self, erro        """
+        Cleans an error message up to remove unnecessary clutter or replace
+        it with a more meaningful one
+        Parameters
+        ----------
+        error : Error
+            Error message to clean
+        Returns
+        -------
+        str
+            Cleaned message
+        """
+        final_message = re.sub(self.UNICODE_TYPE_REGEX, r"\1", error.message)
+
+        if final_message.endswith(" under any of the given schemas"):
+            return "Is not valid"
+        if final_message.startswith(("None is not of type ", "None is not one of ")):
+            return "Must not be empty"
+        if " does not match " in final_message and "patternError" in error.schema:
+            return re.sub("does not match .+", error.schema.get("patternError"), final_message)
+
+        return final_messageDict) -> None:  # type: ignore[no-untyped-def]
+        """
+        Processes the validation errors recursively
+        error is actually a tree of errors
+        Each error can have a list of child errors in its 'context' attribute
+        Parameters
+        ----------
+        error : Error
+            Error at the head
+        errors_set : Dict
+            Set of formatted errors
+        """
+        if error is None:
+            returnl.deprecation_control import deprecated
 
 from . import sam_schema
 

@@ -1,6 +1,13 @@
 Conditions:
-  QueueCreationDisabled:
-    Fn::Equals:
+  QueueCreationDisabl          if (event.Success) {
+              console.log("Success");
+              context.callbackWaitsForEmptyEventLoop = false;
+              callback(null);
+          } else {
+              console.log("Failure");
+              context.callbackWaitsForEmptyEventLoop = false;
+              callback(new Error("Event failed with 'Success' set to false."), 'Destination Function Error: Event Failure');
+          }n::Equals:
     - false
     - true
 Resources:

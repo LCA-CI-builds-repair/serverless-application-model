@@ -3,7 +3,11 @@ Development Guide
 
 **Welcome hacker!**
 
-This document will make your life easier by helping you setup a
+Thiscan be found [here](https://black.readthedocs.io/en/stable/editor_integration.html)
+ 
+##### (Workaround) Integrating Black directly in your favorite IDE
+Since black is installed in virtualenv, when you follow [this instruction](https://black.readthedocs.io/en/stable/editor_integration.html), `which black` might give you this
+our life easier by helping you setup a
 development environment, IDEs, tests, coding practices, or anything that
 will help you be more productive. If you found something is missing or
 inaccurate, update this guide and send a Pull Request.

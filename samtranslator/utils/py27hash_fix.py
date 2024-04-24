@@ -1,7 +1,23 @@
-"""
-"""
+""""
 
 import copy
+import ctypes
+import json
+import logging
+from typing import Any, Dict, Iterator, List, Optional, cast
+
+from samtranslator.parser.parser import Parser
+from samtranslator.third_party.py27hash.hash import Hash
+
+LOG = logging.getLogger(__name__)
+
+# Constants based on Python 2.7 dictionary
+# See: https://github.com/python/cpython/blob/v2.7.18/Objects/dictobject.c
+MINSIZE = 8
+PERTURB_SHIFT = 5
+
+unicode_string_type = str
+long_int_type = int
 import ctypes
 import json
 import logging

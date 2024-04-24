@@ -1,5 +1,24 @@
 """
-Retry decorator to retry decorated function based on Exception with exponential backoff and number of attempts built-in.
+Retry decorator to rimport time
+import math
+from functools import wraps
+
+def retry(attempts, delay, exc_raise, exc_raise_msg):
+    def decorator(func):
+        @wraps(func)
+        def wrapper(*args, **kwargs):
+            remaining_attempts = attempts
+            retry_attempt = 1
+            while remaining_attempts >= 1:
+                try:
+                    return func(*args, **kwargs)
+                except exc as e:
+                    time.sleep(math.pow(2, retry_attempt) * delay)
+                    retry_attempt += 1
+                    remaining_attempts -= 1
+            raise exc_raise(exc_raise_msg)
+        return wrapper
+    return decoratorfunction based on Exception with exponential backoff and number of attempts built-in.
 """
 import math
 import random

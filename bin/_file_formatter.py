@@ -1,4 +1,18 @@
-"""Formatter base class for JSONFormatter and YamlFormatter."""
+"""Formatter base class for JSONFormatter and Ya        file_str = file_path.read_text(encoding="utf-8")
+        try:
+            formatted_file_str = self.format_str(file_str)
+        except self.decode_exception as error:
+            raise ValueError(f"Error processing {file_path}: Cannot decode the file content") from error
+        except Exception as error:
+            raise ValueError(f"Error processing {file_path}: Failed to process") from error
+        if file_str != formatted_file_str:
+            if self.args.write:
+                Path(file_path).write_text(formatted_file_str, encoding="utf-8")
+                print(f"Reformatted {file_path}")
+            if self.args.check:
+                print(f"Would reformat {file_path}")
+            self.unformatted_file_count += 1
+        self.scanned_file_found += 1
 import argparse
 import os
 import sys

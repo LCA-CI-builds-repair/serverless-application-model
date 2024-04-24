@@ -2,9 +2,20 @@
 FAQ
 ===
 
-Frequently Asked Questions
+Frequently Asked Questi```
 
-.. contents::
+    aws apigateway update-stage \
+      --rest-api-id <api-id> \
+      --stage-name <stage-name> \
+      --patch-operations \
+        op=replace,path=/*/*/logging/dataTrace,value=true \
+        op=replace,path=/*/*/logging/loglevel,value=Info \
+        op=replace,path=/*/*/metrics/enabled,value=true
+
+The command above can be executed as a post-deployment CI step or triggered by a `custom resource <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-custom-resources.html/>`_ within the same CloudFormation template.
+
+Please note that there may be metric gaps between the time CloudFormation updates the API Gateway and the time this command is executed.
+ts::
   :local:
 
 How to manage multiple environments?

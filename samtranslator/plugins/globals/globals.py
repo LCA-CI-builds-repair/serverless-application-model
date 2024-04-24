@@ -4,7 +4,10 @@ from typing import Any, Dict, List, Optional, Union
 from samtranslator.model.exceptions import ExceptionWithMessage, InvalidResourceAttributeTypeException
 from samtranslator.public.intrinsics import is_intrinsics
 from samtranslator.public.sdk.resource import SamResourceType
-from samtranslator.swagger.swagger import SwaggerEditor
+from samtranslator.swagger.swagger importclass Globals:
+    """
+    This class represents the global settings for SAM template transformations.
+    """SwaggerEditor
 
 
 class Globals:

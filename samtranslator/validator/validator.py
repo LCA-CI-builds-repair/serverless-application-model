@@ -6,7 +6,24 @@ from typing import Any
 
 import jsonschema
 
-from samtranslator.internal.deprecation_control import deprecated
+from samtranslatorclass Validator:
+    """
+    This class Validator:
+    def clean_error_message(self, error: Error) -> str:
+        """
+        Cleans the error message.
+
+        Parameters:
+        error (Error): Error message to clean
+
+        Returns:
+        str: Cleaned error message
+        """
+        # Implementation of cleaning error message represents a validator for errors and error sets.
+    """
+    def __init__(self, error: Error, errors_set: Dict):
+        self.error = error
+        self.errors_set = errors_seternal.deprecation_control import deprecated
 
 from . import sam_schema
 

@@ -1,4 +1,5 @@
-"""Formatter base class for JSONFormatter and YamlFormatter."""
+"""Formatter base class for JSONFormatter and YamlFormatter.""        # Increment the counter for scanned files found
+        self.scanned_file_found += 1
 import argparse
 import os
 import sys

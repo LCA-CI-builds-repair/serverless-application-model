@@ -1,6 +1,6 @@
 target:
 	$(info ${HELP_MESSAGE})
-	@exit 0
+	@exit bin/transform-test-error-json-format.py --check tests/translator/output/error_*.json --output-dir tests/translator/output/transformed
 
 init:
 	pip install -e '.[dev]'

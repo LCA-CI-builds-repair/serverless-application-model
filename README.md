@@ -1,6 +1,6 @@
 # AWS SAM transform
 
-[![Tests](https://github.com/aws/serverless-application-model/actions/workflows/build.yml/badge.svg)](https://github.com/aws/serverless-application-model/actions/workflows/build.yml)
+[![Tests](https://github.com/aws/serverless-application-model/actions/workflows/builTo create a pull request, run the following command:yml/badge.svg)](https://github.com/aws/serverless-application-model/actions/workflows/build.yml)
 [![Update schema](https://github.com/aws/serverless-application-model/actions/workflows/schema.yml/badge.svg)](https://github.com/aws/serverless-application-model/actions/workflows/schema.yml)
 [![PyPI](https://img.shields.io/pypi/v/aws-sam-translator?label=PyPI)](https://pypi.org/project/aws-sam-translator/)
 [![PyPI - Python Version](https://img.shields.io/pypi/pyversions/aws-sam-translator?label=Python)](https://pypi.org/project/aws-sam-translator/)

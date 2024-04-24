@@ -1,4 +1,34 @@
-"""Formatter base class for JSONFormatter and YamlFormatter."""
+"""Formatter base class for JSONFormatt    @abstractmethod
+    def class FileFormatter:
+    def __init__(self, scanned_file_found: int, unformatted_file_count: int, args: Any):
+        self.scanned_file_found = scanned_file_found
+        self.unformatted_file_count = unformatted_file_count
+        self.args = args
+
+    def process_files(self, directory_path: str) -> None:
+        for root, _dirs, files in os.walk(directory_path):
+            for file in files:
+                file_path = Path(root) / file
+                if file_path.suffix != self.file_extension():
+                    continue
+                self.process_file(file_path)
+
+    def output_summary(self) -> None:
+        print(f"{self.scanned_file_found} file(s) scanned.")
+        if self.args.write:
+            print(f"{self.unformatted_file_count} file(s) reformatted.")
+        if self.args.check:
+            print(f"{self.unformatted_file_count} file(s) need reformat.")
+            if self.unformatted_file_count:
+                sys.exit(-1)
+        print("\033[1mAll done! ✨ 🍰 ✨\033[0m")  # using bold fontelf) -> str:
+        """Return file extension of files to format."""
+        pass
+
+    @classmethod  # noqa: B027
+    def config_additional_args(cls) -> Dict[str, Any]:
+        """Optionally configure additional args to arg parser."""
+        passYamlFormatter."""
 import argparse
 import os
 import sys

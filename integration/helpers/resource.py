@@ -3,7 +3,11 @@ import random
 import re
 import string
 from pathlib import Path
-from typing import Any, Callable, Dict, Iterator, Set
+### Summary of Changes:
+- The provided code snippet seems to be incomplete or unrelated to the context provided.
+- Without additional context or code surfor resource in template_dict.get("Resources", {}).values()ounding the snippet, it is unclear how to address the issue effectively.
+
+As the code snippet is incomplete and the context is not clear, I will wait for further information or the complete code snippet to proceed with making the necessary edits.rom typing import Any, Callable, Dict, Iterator, Set
 
 import boto3
 from botocore.exceptions import NoRegionError

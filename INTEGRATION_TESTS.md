@@ -1,4 +1,11 @@
-# AWS SAM integration tests
+#```
+These tests run SAM against AWS services by translating SAM templates, deploying them to Cloud Formation and verifying the resulting objects.
+
+They must run successfully under Python 3.
+
+## Run the tests
+
+### Prerequisitesintegration tests
 
 These tests run SAM against AWS services by translating SAM templates, deploying them to Cloud Formation and verifying the resulting objects.
 

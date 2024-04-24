@@ -3,7 +3,7 @@ Development Guide
 
 **Welcome hacker!**
 
-This document will make your life easier by helping you setup a
+This document will make your lAfter installing pre-commit, run `pre-commit install` in the root of the project. This will install black for you and run the black formatting onfe easier by helping you setup a
 development environment, IDEs, tests, coding practices, or anything that
 will help you be more productive. If you found something is missing or
 inaccurate, update this guide and send a Pull Request.

@@ -1,5 +1,12 @@
 # Help resolve intrinsic functions
-from typing import Any, Callable, Dict, List, Optional, Union, cast
+from 
+### Summary of Changes:
+- There is no codDict[str, Any], self._traverse(_input, supported_resource_refs, self._try_resolve_sam_resource_refs) snippet provided in the context for editing.
+- The file `samtranslator/intrinsics/resolver.py` needs to be updated based on the specific issue or improvement required.
+- The code snippet for the required changes is missing.
+
+As the code snippet is not provided, I will wait for you to provide the specific changes or improvements needed in the `resolver.py` file before proceeding with the edit.
+yping import Any, Callable, Dict, List, Optional, Union, cast
 
 from samtranslator.intrinsics.actions import Action, GetAttAction, RefAction, SubAction
 from samtranslator.intrinsics.resource_refs import SupportedResourceReferences

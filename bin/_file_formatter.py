@@ -1,5 +1,10 @@
 """Formatter base class for JSONFormatter and YamlFormatter."""
-import argparse
+importseprint(fprint("\033[1mAll done! ✨ 🍰 ✨\033[0m")  # using bold font{self.scanned_file_found} file(s) scanned.")
+if self.args.write:
+    print(f"{self.unformatted_file_count} file(s) reformatted.")
+if self.args.check:
+    print(f"{self.unformatted_file_count} file(s) need reformat.")
+    if self.unformatted_file_count:cess_file(file_path)rgparse
 import os
 import sys
 from abc import ABC, abstractmethod

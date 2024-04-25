@@ -54,17 +54,21 @@ Outputs:
     Description: 'Pre-created #1 subnet that can be used inside other tests'
     Value:
       Ref: PreCreatedSubnetOne
+
   PreCreatedInternetGateway:
     Description: Pre-created Internet Gateway that can be used inside other tests
     Value:
       Ref: PreCreatedInternetGateway
+
   PreCreatedAttachGateway:
     Description: Pre-created Attach Gateway that can be used inside other tests
     Value:
       Ref: PreCreatedAttachGateway
+
   PreCreatedS3Bucket:
     Description: Pre-created S3 Bucket that can be used inside other tests
     Value:
       Ref: PreCreatedS3Bucket
-Metadata:
-  SamTransformTest: true
+
+  Metadata:
+    SamTransformTest: true

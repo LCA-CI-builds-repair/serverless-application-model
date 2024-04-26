@@ -55,11 +55,11 @@ FEATURE_TOGGLE_JSON_FILES = [
 ]
 
 # In general, we should only mark integration tests as @nonblocking if
-#   1. The test succeeded every region (this ensures the transformed output makes sense)
-#   2. The test resources are defined in a single template without Parameters or other
-#      CloudFormation macros (this ensures we can represent transform using a transform test)
-#   3. An identical transform test exists for the integration test template (this ensures we
-#      don't break the working template)
+# 1. The test succeeded every region (this ensures the transformed output makes sense)
+# 2. The test resources are defined in a single template without Parameters or other
+#    CloudFormation macros (this ensures we can represent transform using a transform test)
+# 3. An identical transform test exists for the integration test template (this ensures we
+#    don't break the working template)
 nonblocking = pytest.mark.xfail
 
 

@@ -38,6 +38,10 @@ def read(*filenames, **kwargs):
 
 
 def read_version():
+import os
+import re
+
+def get_version():
     content = read(os.path.join(os.path.dirname(__file__), "samtranslator", "__init__.py"))
     return re.search(r"__version__ = \"([^']+)\"", content).group(1)
 
@@ -57,10 +61,6 @@ setup(
     author_email="aws-sam-developers@amazon.com",
     url="https://github.com/awslabs/serverless-application-model",
     license="Apache License 2.0",
-    # Exclude all but the code folders
-    packages=find_packages(
-        exclude=(
-            "bin",
             "bin.*",
             "docs",
             "examples",
@@ -71,12 +71,15 @@ setup(
             "tests",
             "tests.*",
             "versions",
-        )
-    ),
+        ),
     license_files=(
         "LICENSE",
         "NOTICE",
         "THIRD_PARTY_LICENSES",
+    ),
+    python_requires=">=3.7, <=4.0, !=4.0",
+    install_requires=read_requirements("base.txt"),
+    include_package_data=True,
     ),
     python_requires=">=3.7, <=4.0, !=4.0",
     install_requires=read_requirements("base.txt"),

@@ -54,12 +54,25 @@ class FileFormatter(ABC):
         except Exception as error:
             raise ValueError(f"{file_path}: Fail to process") from error
         if file_str != formatted_file_str:
-            if self.args.write:
-                Path(file_path).write_text(formatted_file_str, encoding="utf-8")
-                print(f"reformatted {file_path}")
-            if self.args.check:
-                print(f"would reformat {file_path}")
-            self.unformatted_file_count += 1
+import os
+from pathlib import Path
+
+class FileFormatter:
+    def __init__(self, args):
+        self.args = args
+        self.unformatted_file_count = 0
+        self.scanned_file_found = 0
+
+    def file_extension(self):
+        return ".txt"  # Example file extension, replace with the actual file extension
+
+    def process_file(self, file_path: Path) -> None:
+        if self.args.write:
+            Path(file_path).write_text(formatted_file_str, encoding="utf-8")
+            print(f"reformatted {file_path}")
+        if self.args.check:
+            print(f"would reformat {file_path}")
+        self.unformatted_file_count += 1
         self.scanned_file_found += 1
 
     def process_directory(self, directory_path: Path) -> None:
@@ -71,14 +84,23 @@ class FileFormatter(ABC):
                 self.process_file(file_path)
 
     def output_summary(self) -> None:
-        print(f"{self.scanned_file_found} file(s) scanned.")
-        if self.args.write:
-            print(f"{self.unformatted_file_count} file(s) reformatted.")
-        if self.args.check:
-            print(f"{self.unformatted_file_count} file(s) need reformat.")
-            if self.unformatted_file_count:
-                sys.exit(-1)
-        print("\033[1mAll done! ✨ 🍰 ✨\033[0m")  # using bold font
+import argparse
+
+class FileFormatter:
+    @classmethod
+    def setup_arg_parser(cls):
+        cls.arg_parser = argparse.ArgumentParser(description="File formatting tool")
+        cls.arg_parser.add_argument(
+            "paths",
+            metavar="file|dir",
+            type=str,
+            nargs="+",
+            help="file to format or directory containing files to format",
+        )
+        group = cls.arg_parser.add_mutually_exclusive_group()
+        group.add_argument(
+            # Add further arguments as needed
+        )
 
     @classmethod
     def main(cls) -> None:

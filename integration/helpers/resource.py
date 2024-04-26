@@ -68,12 +68,12 @@ def verify_stack_resources(expected_file_path, stack_resources):
             return "'{}' expected, '{}' found".format(exp["ResourceType"], parsed["ResourceType"])
     return None
 
-
 def generate_suffix():
     """
     Generates a basic random string of length RANDOM_SUFFIX_LENGTH
     to append to objects names used in the tests to avoid collisions
     between tests runs
+    """
 
     Returns
     -------

@@ -2,20 +2,17 @@
 """
 Transform test error JSON file formatter (without prettier).
 
-It makes error json easier to review by breaking down "errorMessage"
-into list of strings (delimiter: ". ").
+It makes error JSON easier to review by breaking down "errorMessage"
+into a list of strings (delimiter: ". ").
 """
 import sys
 from pathlib import Path
-
-from typing_extensions import Final
+from typing import Type
 
 # To allow this script to be executed from other directories
 sys.path.insert(0, str(Path(__file__).absolute().parent.parent))
 
 import json
-from typing import Type
-
 from bin._file_formatter import FileFormatter
 
 

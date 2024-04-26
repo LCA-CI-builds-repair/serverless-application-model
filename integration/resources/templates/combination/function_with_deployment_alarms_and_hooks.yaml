@@ -71,6 +71,15 @@ Resources:
     Properties:
       Namespace: AWS/Lambda
       MetricName: Error
+      Dimensions:
+        - Name: FunctionName
+          Value:
+            Fn::GetAtt: [MyLambdaFunction, Arn]
+      Statistic: Maximum
+      Period: 60
+      EvaluationPeriods: 5
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Threshold: 1.0
 
       Dimensions:
       - Name: FunctionName

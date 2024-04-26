@@ -921,10 +921,10 @@ class SamFunction(SamResourceMacro):
         prefix = f"{self.logical_id}Version"
         logical_dict = {}
         # We can't directly change AutoPublishAlias as that would be a breaking change, so we have to add this opt-in
-        # property that when set to true would change the lambda version whenever a property in the lambda function changes
+        # Check if AutoPublishAliasAllProperties is set to true to change lambda version when properties change
         if self.AutoPublishAliasAllProperties:
-            properties = function._generate_resource_dict().get("Properties", {})
-            logical_dict = properties
+            lambda_properties = function._generate_resource_dict().get("Properties", {})
+            logical_dict = lambda_properties
         else:
             with suppress(AttributeError, UnboundLocalError):
                 logical_dict = code_dict.copy()

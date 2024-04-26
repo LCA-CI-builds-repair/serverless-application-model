@@ -144,7 +144,7 @@ class SamTemplateValidator:
 
     def _cleanup_error_message(self, error):  # type: ignore[no-untyped-def]
         """
-        Cleans an error message up to remove unecessary clutter or replace
+        Cleans up an error message to remove unnecessary clutter or replace
         it with a more meaningful one
         Parameters
         ----------

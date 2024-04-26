@@ -76,7 +76,7 @@ class FileFormatter(ABC):
             print(f"{self.unformatted_file_count} file(s) reformatted.")
         if self.args.check:
             print(f"{self.unformatted_file_count} file(s) need reformat.")
-            if self.unformatted_file_count:
+            if self.unformatted_file_count > 0:
                 sys.exit(-1)
         print("\033[1mAll done! ✨ 🍰 ✨\033[0m")  # using bold font
 

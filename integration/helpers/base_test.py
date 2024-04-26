@@ -60,9 +60,6 @@ FEATURE_TOGGLE_JSON_FILES = [
 #      CloudFormation macros (this ensures we can represent transform using a transform test)
 #   3. An identical transform test exists for the integration test template (this ensures we
 #      don't break the working template)
-nonblocking = pytest.mark.xfail
-
-
 class BaseTest(TestCase):
     @pytest.fixture(autouse=True)
     def prefix(self, get_prefix):

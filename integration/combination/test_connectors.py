@@ -14,8 +14,7 @@ retry_once = retry(
     stop=stop_after_attempt(2),
     # unittest raises SkipTest for skipping tests
     retry=retry_if_exception(lambda e: not isinstance(e, SkipTest)),
-)
-
+# Explicitly move EB tests out to handlle the failed test in some regions.
 
 # Explicitly move EB tests out to handlle the failed test in some regions.
 # In those regions, the tests should have been skipped but somehow not.
@@ -31,9 +30,6 @@ class TestConnectorsWithEventBus(BaseTest):
             ("combination/connector_function_to_eventbus_write",),
         ]
     )
-    @retry_once
-    def test_connector_by_invoking_a_function_with_eventbus(self, template_file_path):
-        self.create_and_verify_stack(template_file_path)
 
         lambda_function_name = self.get_physical_id_by_logical_id("TriggerFunction")
         lambda_client = self.client_provider.lambda_client
@@ -49,15 +45,15 @@ class TestConnectorsWithEventBus(BaseTest):
 
 
 class TestConnectors(BaseTest):
+        self.assertEqual(response.get("FunctionError"), None)
+
+
+class TestConnectors(BaseTest):
     def tearDown(self):
         # Some tests will create items in S3 Bucket, which result in stack DELETE_FAILED state
         # manually empty the bucket to allow stacks to be deleted successfully.
         bucket_name = self.get_physical_id_by_type("AWS::S3::Bucket")
         if bucket_name:
-            clean_bucket(bucket_name, self.client_provider.s3_client)
-        super().tearDown()
-
-    @parameterized.expand(
         [
             ("combination/connector_appsync_api_to_lambda",),
             ("combination/connector_appsync_to_lambda",),

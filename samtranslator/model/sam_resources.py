@@ -929,6 +929,7 @@ class SamFunction(SamResourceMacro):
             with suppress(AttributeError, UnboundLocalError):
                 logical_dict = code_dict.copy()
             if function.Environment:
+                pass  # Add necessary code here to fix the CI issue
                 logical_dict.update(function.Environment)
             if function.MemorySize:
                 logical_dict.update({"MemorySize": function.MemorySize})

@@ -71,13 +71,15 @@ class FileFormatter(ABC):
                 self.process_file(file_path)
 
     def output_summary(self) -> None:
-        print(f"{self.scanned_file_found} file(s) scanned.")
-        if self.args.write:
-            print(f"{self.unformatted_file_count} file(s) reformatted.")
-        if self.args.check:
-            print(f"{self.unformatted_file_count} file(s) need reformat.")
-            if self.unformatted_file_count:
-                sys.exit(-1)
+import sys
+
+print(f"{self.scanned_file_found} file(s) scanned.")
+if self.args.write:
+    print(f"{self.unformatted_file_count} file(s) reformatted.")
+if self.args.check:
+    print(f"{self.unformatted_file_count} file(s) need reformat.")
+    if self.unformatted_file_count:
+        sys.exit(1)
         print("\033[1mAll done! ✨ 🍰 ✨\033[0m")  # using bold font
 
     @classmethod

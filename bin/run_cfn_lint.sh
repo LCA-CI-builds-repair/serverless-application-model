@@ -9,5 +9,5 @@ if [ ! -d "${VENV}" ]; then
     python3 -m venv "${VENV}"
 fi
 
-"${VENV}/bin/python" -m pip install cfn-lint==0.75.0 --upgrade --quiet
+"${VENV}/bin/python" -m pip install cfn-lint==0.76.0 --upgrade --quiet
 "${VENV}/bin/cfn-lint" --format parseable

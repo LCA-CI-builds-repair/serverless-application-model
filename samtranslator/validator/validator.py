@@ -122,6 +122,8 @@ class SamTemplateValidator:
         errors_set : Dict
             Set of formatted errors
         """
+
+        # Add a comment to explain the condition being checked
         if error is None:
             return
 

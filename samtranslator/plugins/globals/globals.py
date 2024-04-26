@@ -304,31 +304,30 @@ class GlobalProperties:
     There is no merge to be done here. Similarly for other data type mismatches between global & local value.
 
     Example:
+        ```
+        Global:
+          Function:
+            CodeUri: s3://bucket/key
 
-      ```
-      Global:
         Function:
-          CodeUri: s3://bucket/key
-
-      Function:
-         CodeUri:
-           Bucket: foo
-           Key: bar
-      ```
+           CodeUri:
+             Bucket: foo
+             Key: bar
+        ```
 
 
-    After processing, Function resource will contain:
-      ```
-        CodeUri:
-           Bucket: foo
-           Key: bar
-      ```
+      After processing, Function resource will contain:
+        ```
+          CodeUri:
+             Bucket: foo
+             Key: bar
+        ```
 
-    **Arrays**
-    If a value is an array at both global & local level, we will simply concatenate them without de-duplicating.
-    Customers can easily fix the duplicates:
+      **Arrays**
+      If a value is an array at both global & local level, we will simply concatenate them without de-duplicating.
+      Customers can easily fix the duplicates:
 
-    Example:
+      Example:
 
       ```
        Global:

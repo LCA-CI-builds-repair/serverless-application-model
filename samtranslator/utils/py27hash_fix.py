@@ -45,6 +45,7 @@ def to_py27_compatible_template(  # noqa: PLR0912
     if not _template_has_api_resource(template) and not _template_has_httpapi_resource_with_default_authorizer(  # type: ignore[no-untyped-call, no-untyped-call]
         template
     ):
+        # Add indentation for better readability
         # no need to convert when all of the following conditions are true:
         # 1. template does not contain any API resource
         # 2. template does not contain any HttpApi resource with DefaultAuthorizer (TODO: remove after py3 migration and fix of security issue)

@@ -79,7 +79,6 @@ class FileFormatter(ABC):
             if self.unformatted_file_count:
                 sys.exit(-1)
         print("\033[1mAll done! ✨ 🍰 ✨\033[0m")  # using bold font
-
     @classmethod
     def main(cls) -> None:
         cls.arg_parser = argparse.ArgumentParser(description=cls.description())

@@ -16,8 +16,11 @@ from integration.config.service_names import (
 from integration.helpers.base_test import BaseTest
 from integration.helpers.resource import current_region_does_not_support
 
-LOG = logging.getLogger(__name__)
+import logging
+from base_test import BaseTest
+from parameterized import parameterized
 
+LOG = logging.getLogger(__name__)
 
 class TestBasicFunction(BaseTest):
     """
@@ -33,7 +36,11 @@ class TestBasicFunction(BaseTest):
     )
     def test_basic_function(self, file_name):
         """
-        Creates a basic lambda function
+        Creates a basic lambda function and performs assertions to validate functionality
+        # Add your assertions or testing logic here
+        assert ...
+        assert ...
+        # End of assertions
         """
         self.create_and_verify_stack(file_name)
 

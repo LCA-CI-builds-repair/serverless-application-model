@@ -78,7 +78,7 @@ setup(
         "NOTICE",
         "THIRD_PARTY_LICENSES",
     ),
-    python_requires=">=3.7, <=4.0, !=4.0",
+    python_requires=">=3.7, !=4.*",
     install_requires=read_requirements("base.txt"),
     include_package_data=True,
     extras_require={"dev": read_requirements("dev.txt")},

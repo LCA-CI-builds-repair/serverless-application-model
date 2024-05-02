@@ -16,8 +16,7 @@ retry_once = retry(
     retry=retry_if_exception(lambda e: not isinstance(e, SkipTest)),
 )
 
-
-# Explicitly move EB tests out to handlle the failed test in some regions.
+# Explicitly move EB tests out to handle the failed test in some regions.
 # In those regions, the tests should have been skipped but somehow not.
 # Test using `skipIf` to see if it helps.
 @skipIf(

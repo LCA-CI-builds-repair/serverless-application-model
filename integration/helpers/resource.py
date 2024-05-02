@@ -257,7 +257,7 @@ def detect_services(template_dict: Dict[str, Any], cfn_resource_types: Set[str])
     return [service for service, detector in SERVICE_DETECTORS.items() if detector(template_dict, cfn_resource_types)]
 
 
-def current_region_not_included(services):
+def current_region_not_included_services(services):
     """
     Opposite of current_region_does_not_support.
     Decides which tests should only be run in certain regions

@@ -7,14 +7,7 @@ into list of strings (delimiter: ". ").
 """
 import sys
 from pathlib import Path
-
-from typing_extensions import Final
-
-# To allow this script to be executed from other directories
-sys.path.insert(0, str(Path(__file__).absolute().parent.parent))
-
 import json
-from typing import Type
 
 from bin._file_formatter import FileFormatter
 

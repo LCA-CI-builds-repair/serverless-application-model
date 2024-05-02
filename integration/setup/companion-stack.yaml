@@ -10,21 +10,14 @@ Resources:
       VpcId:
         Ref: PreCreatedVpc
       CidrBlock: 10.0.0.0/24
-      AvailabilityZone:
-        Fn::Select:
-        - 0
-        - Fn::GetAZs: ''
-
+      AvailabilityZone: ''
   PreCreatedSubnetTwo:
     Type: AWS::EC2::Subnet
     Properties:
       VpcId:
         Ref: PreCreatedVpc
       CidrBlock: 10.0.1.0/24
-      AvailabilityZone:
-        Fn::Select:
-        - 1
-        - Fn::GetAZs: ''
+      AvailabilityZone: ''
 
   PreCreatedInternetGateway:
     Type: AWS::EC2::InternetGateway

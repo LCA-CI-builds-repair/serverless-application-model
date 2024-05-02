@@ -15,9 +15,11 @@ retry_once = retry(
     # unittest raises SkipTest for skipping tests
     retry=retry_if_exception(lambda e: not isinstance(e, SkipTest)),
 )
+from integration.combination.decorators import skipIf, nonblocking
+from integration.combination.parameterized_module import parameterized
+from integration.combination.retry_module import retry_once
 
-
-# Explicitly move EB tests out to handlle the failed test in some regions.
+# Explicitly move EB tests out to handle the failed test in some regions.
 # In those regions, the tests should have been skipped but somehow not.
 # Test using `skipIf` to see if it helps.
 @skipIf(
@@ -34,7 +36,6 @@ class TestConnectorsWithEventBus(BaseTest):
     @retry_once
     def test_connector_by_invoking_a_function_with_eventbus(self, template_file_path):
         self.create_and_verify_stack(template_file_path)
-
         lambda_function_name = self.get_physical_id_by_logical_id("TriggerFunction")
         lambda_client = self.client_provider.lambda_client
 

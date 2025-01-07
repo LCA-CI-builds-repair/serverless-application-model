@@ -1,7 +1,6 @@
 from abc import ABC, abstractmethod
 from typing import Any, Dict
 
-
 class Action(ABC):
     """
     Base class for Resolver function actions. Each Resolver function must subclass this,
@@ -12,13 +11,12 @@ class Action(ABC):
     def execute(self, template: Dict[str, Any]) -> Dict[str, Any]:
         pass
 
-
 class ResolveDependsOn(Action):
     DependsOn = "DependsOn"
-    
+
     def __init__(self, resolution_data: Dict[str, str]):
         """
-        Initializes ResolveDependsOn. Where data necessary to resolve execute can be provided.
+        Initializes ResolveDependsOn. Where data necessary to resolve execute can be provided
 
         :param resolution_data: Extra data necessary to resolve execute properly.
         """
@@ -26,7 +24,7 @@ class ResolveDependsOn(Action):
 
     def execute(self, template: Dict[str, Any]) -> Dict[str, Any]:
         """
-        Resolve DependsOn when logical ids get changed when transforming (ex: AWS::Serverless::LayerVersion)
+        Resolve DependsOn when logical ids get changed when transforming (ex: AWS::Serverless::LayerVersion
 
         :param input_dict: Chunk of the template that is attempting to be resolved
         :param resolution_data: Dictionary of the original and changed logical ids

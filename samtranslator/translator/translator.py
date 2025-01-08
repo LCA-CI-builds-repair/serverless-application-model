@@ -429,7 +429,7 @@ def _resolve_depends_on(input_dict: Dict[str, Any], resolution_data: dict[str, s
     Resolve DependsOn when logical ids get changed when transforming (ex: AWS::Serverless::LayerVersion)
 
     :param input_dict: Chunk of the template that is attempting to be resolved
-    :param resolution_data: Dictionary of the original and changed logical ids
+    :param resolution_data: Dict[str, str]  # Corrected to use the typing.Dict
     :return: Modified dictionary with values resolved
     """
     # Checks if input dict is resolvable

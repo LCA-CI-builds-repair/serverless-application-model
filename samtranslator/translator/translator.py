@@ -82,22 +82,28 @@ class Translator:
             events_properties = resource_dict.get("Properties", {}).get("Events", {})
             events = list(events_properties.values()) if events_properties else []
             for item in events:
-                # If the function event type is `Api` then gets the function name and
-                # adds to the function_names dict with key as the api_name and value as the function_name
-                item_properties = item.get("Properties", {})
-                if item.get("Type") == "Api" and item_properties.get("RestApiId"):
-                    rest_api = item_properties.get("RestApiId")
-                    api_name = Api.get_rest_api_id_string(rest_api)
-                    if not isinstance(api_name, str):
-                        continue
-                    raw_function_name = resource_dict.get("Properties", {}).get("FunctionName")
-                    resolved_function_name = intrinsics_resolver.resolve_parameter_refs(
-                        copy.deepcopy(raw_function_name)
+                try:
+                    # If the function event type is `Api` then gets the function name and
+                    # adds to the function_names dict with key as the api_name and value as the function_name
+                    item_properties = item.get("Properties", {})
+                    if item.get("Type") == "Api" and item_properties.get("RestApiId"):
+                        rest_api = item_properties.get("RestApiId")
+                        api_name = Api.get_rest_api_id_string(rest_api)
+                        if not isinstance(api_name, str):
+                            continue
+                        raw_function_name = resource_dict.get("Properties", {}).get("FunctionName")
+                        resolved_function_name = intrinsics_resolver.resolve_parameter_refs(
+                            copy.deepcopy(raw_function_name)
+                        )
+                        if not resolved_function_name:
+                            continue
+                        self.function_names.setdefault(api_name, "")
+                        self.function_names[api_name] += str(resolved_function_name)
+                except (TypeError, AttributeError):
+                    # Handle cases where item_properties or item.get("Type") is None or not a string
+                    self.document_errors.append(
+                        InvalidEventException(resource_dict.get("LogicalId", ""), item.get("Type", ""))
                     )
-                    if not resolved_function_name:
-                        continue
-                    self.function_names.setdefault(api_name, "")
-                    self.function_names[api_name] += str(resolved_function_name)
         return self.function_names
 
     def translate(  # noqa: PLR0912, PLR0915

@@ -2,7 +2,6 @@ from typing import Any, Dict, List
 
 from samtranslator.utils.actions import Action
 
-
 def traverse(
     input_value: Any,
     actions: List[Action],

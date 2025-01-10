@@ -20,7 +20,7 @@ class ResolveDependsOn(Action):
         """
         Initializes ResolveDependsOn. Where data necessary to resolve execute can be provided.
 
-        :param resolution_data: Extra data necessary to resolve execute properly.
+        :param resolution_data: Extra data necessary to execute properly.
         """
         self.resolution_data = resolution_data
 

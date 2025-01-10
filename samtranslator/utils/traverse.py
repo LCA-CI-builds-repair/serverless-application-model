@@ -43,7 +43,7 @@ def _traverse_dict(
 
     :param input_dict: Input dictionary to traverse
     :param actions: This is just to pass it to the template partition
-    :return: Modified dictionary with values resolved
+    :return: Modified dictionary with values resolved.
     """
     for key, value in input_dict.items():
         input_dict[key] = traverse(value, actions)

@@ -291,7 +291,7 @@ class Translator:
         return functions + statemachines + apis + others + connectors
 
     @staticmethod
-    def _update_resources(connectors_list: List[Resource]) -> Dict[str, Any]:
+    def _update_resources(connectors_list: List[Resource]) -> typing.Dict[str, Any]:
         connector_resources = {}
         for connector in connectors_list:
             connector_resources.update(connector.to_dict())
@@ -452,7 +452,7 @@ def _resolve_depends_on(input_dict: Dict[str, Any], resolution_data: dict[str, s
 
 
 def traverse_dict(input_dict: Dict[str, Any], resolution_data: Dict[str, str]) -> Dict[str, Any]:
-    """
+    """ 
     Traverse a dictionary to resolve intrinsic functions on every value
 
     :param input_dict: Input dictionary to traverse
@@ -474,7 +474,7 @@ def canHandle(input_dict: Dict[str, Any]) -> bool:
     return isinstance(input_dict, dict) and "DependsOn" in input_dict
 
 
-def prepare_plugins(plugins: Optional[List[BasePlugin]], parameters: Optional[Dict[str, Any]] = None) -> SamPlugins:
+def prepare_plugins(plugins: Optional[List[BasePlugin]], parameters: Optional[typing.Dict[str, Any]] = None) -> SamPlugins:
     """
     Creates & returns a plugins object with the given list of plugins installed. In addition to the given plugins,
     we will also install a few "required" plugins that are necessary to provide complete support for SAM template spec.

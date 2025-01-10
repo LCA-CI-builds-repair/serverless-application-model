@@ -1,6 +1,5 @@
 from abc import ABC, abstractmethod
-from typing import Any, Dict
-
+from typing import Any, Dict, Optional
 
 class Action(ABC):
     """
@@ -11,7 +10,7 @@ class Action(ABC):
     @abstractmethod
     def execute(self, template: Dict[str, Any]) -> Dict[str, Any]:
         pass
-
+        
 
 class ResolveDependsOn(Action):
     DependsOn = "DependsOn"
@@ -27,7 +26,7 @@ class ResolveDependsOn(Action):
     def execute(self, template: Dict[str, Any]) -> Dict[str, Any]:
         """
         Resolve DependsOn when logical ids get changed when transforming (ex: AWS::Serverless::LayerVersion)
-
+        
         :param input_dict: Chunk of the template that is attempting to be resolved
         :param resolution_data: Dictionary of the original and changed logical ids
         :return: Modified dictionary with values resolved
@@ -42,7 +41,7 @@ class ResolveDependsOn(Action):
         for old_logical_id, changed_logical_id in self.resolution_data.items():
             # Done like this as there is no other way to know if this is a DependsOn vs some value named the
             # same as the old logical id. (ex LayerName is commonly the old_logical_id)
-            if isinstance(template[self.DependsOn], list):
+            if isinstance(template.get(self.DependsOn, []), list):
                 for index, value in enumerate(template[self.DependsOn]):
                     if value == old_logical_id:
                         template[self.DependsOn][index] = changed_logical_id

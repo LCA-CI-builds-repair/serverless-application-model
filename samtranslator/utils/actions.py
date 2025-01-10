@@ -15,7 +15,7 @@ class Action(ABC):
 
 class ResolveDependsOn(Action):
     DependsOn = "DependsOn"
-    
+
     def __init__(self, resolution_data: Dict[str, str]):
         """
         Initializes ResolveDependsOn. Where data necessary to resolve execute can be provided.
@@ -36,8 +36,7 @@ class ResolveDependsOn(Action):
         if template is None or not self._can_handle_depends_on(input_dict=template):
             return template
         # Checks if DependsOn is valid
-        if not (isinstance(template[self.DependsOn], (list, str))):
-            return template
+        if not isinstance(template[self.DependsOn], (list, str)): return template
         # Check if DependsOn matches the original value of a changed_logical_id key
         for old_logical_id, changed_logical_id in self.resolution_data.items():
             # Done like this as there is no other way to know if this is a DependsOn vs some value named the
@@ -45,8 +44,7 @@ class ResolveDependsOn(Action):
             if isinstance(template[self.DependsOn], list):
                 for index, value in enumerate(template[self.DependsOn]):
                     if value == old_logical_id:
-                        template[self.DependsOn][index] = changed_logical_id
-            elif template[self.DependsOn] == old_logical_id:
+                        template[self.DependsOn][index] = changed_logical_id elif template[self.DependsOn] == old_logical_id:
                 template[self.DependsOn] = changed_logical_id
         return template
 

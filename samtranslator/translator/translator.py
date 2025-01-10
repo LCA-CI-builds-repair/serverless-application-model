@@ -404,7 +404,7 @@ def traverse_template_depends_on(input_value: Dict[str, Any], resolution_data: D
     Driver method that performs the actual traversal of input and calls _resolve_depends_on when
     needed to perform the resolution.
     :param input_value: Any primitive type  (dict, array, string etc) whose value might contain an intrinsic function
-    :param resolution_data: Data that will help with resolution i.e. old and new logical ids after transformation
+    :param resolution_data: Data that will help with resolution, i.e., old and new logical IDs after transformation
     :return: Modified `input` with DependsOn resolved
     """
     if len(resolution_data) == 0:

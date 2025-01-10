@@ -58,13 +58,19 @@ class Translator:
             in addition to the default ones.
         """
         self.managed_policy_map = managed_policy_map
-        self.plugins = plugins
+        if plugins is None:
+            self.plugins = []
+        else:
+            self.plugins = plugins
         self.sam_parser = sam_parser
         self.feature_toggle: Optional[FeatureToggle] = None
         self.boto_session = boto_session
         self.metrics = metrics if metrics else Metrics("ServerlessTransform", DummyMetricsPublisher())
         MetricsMethodWrapperSingleton.set_instance(self.metrics)
         self.document_errors: List[ExceptionWithMessage] = []
+
+        if not isinstance(self.managed_policy_map, dict):
+            raise InvalidResourceException("Translator", "managed_policy_map must be a dictionary")
 
         if self.boto_session:
             ArnGenerator.BOTO_SESSION_REGION_NAME = self.boto_session.region_name
@@ -207,7 +213,10 @@ class Translator:
                             DuplicateLogicalIdException(logical_id, resource.logical_id, resource.resource_type)
                         )
             except (InvalidResourceException, InvalidEventException, InvalidTemplateException) as e:
-                self.document_errors.append(e)
+                if isinstance(e, InvalidResourceException):
+                    self.document_errors.append(e)
+                else:
+                    raise e
 
         if deployment_preference_collection.any_enabled():
             template["Resources"].update(deployment_preference_collection.get_codedeploy_application().to_dict())
@@ -230,7 +239,9 @@ class Translator:
         # Run the after-transform plugin target
         try:
             sam_plugins.act(LifeCycleEvents.after_transform_template, template)
-        except (InvalidDocumentException, InvalidResourceException, InvalidTemplateException) as e:
+        except (InvalidDocumentException, InvalidTemplateException) as e:
+            raise e
+        except InvalidResourceException as e:
             self.document_errors.append(e)
 
         # Cleanup

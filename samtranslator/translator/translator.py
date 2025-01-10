@@ -243,7 +243,7 @@ class Translator:
             return intrinsics_resolver.resolve_sam_resource_refs(template, supported_resource_refs)
         raise InvalidDocumentException(self.document_errors)
 
-    # private methods
+    # Private methods
     def _get_resources_to_iterate(
         self, sam_template: Dict[str, Any], macro_resolver: ResourceTypeResolver
     ) -> List[Tuple[str, Dict[str, Any]]]:

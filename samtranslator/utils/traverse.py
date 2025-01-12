@@ -59,7 +59,7 @@ def _traverse_list(
     Traverse a list to resolve changed values on every element
 
     :param input_list: List of input
-    :param actions: This is just to pass it to the template partition
+    :param actions: Actions to perform on each element
     :return: Modified list with values functions resolved
     """
     for index, value in enumerate(input_list):

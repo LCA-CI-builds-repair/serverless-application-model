@@ -15,7 +15,7 @@ class Action(ABC):
 
 class ResolveDependsOn(Action):
     DependsOn = "DependsOn"
-    
+
     def __init__(self, resolution_data: Dict[str, str]):
         """
         Initializes ResolveDependsOn. Where data necessary to resolve execute can be provided.
@@ -52,7 +52,7 @@ class ResolveDependsOn(Action):
 
     def _can_handle_depends_on(self, input_dict: Dict[str, Any]) -> bool:
         """
-        Checks if the input dictionary is of length one and contains "DependsOn"
+        Checks if the input dictionary contains "DependsOn"
 
         :param input_dict: the Dictionary that is attempting to be resolved
         :return boolean value of validation attempt

@@ -399,7 +399,7 @@ class Translator:
         return SamConnector.from_dict(full_connector_logical_id, connector)
 
 
-def traverse_template_depends_on(input_value: Dict[str, Any], resolution_data: Dict[str, str]) -> Dict[str, Any]:
+def traverse_template_depends_on(input_value: Dict[str, Any], resolution_data: dict[str, str]) -> Dict[str, Any]:
     """
     Driver method that performs the actual traversal of input and calls _resolve_depends_on when
     needed to perform the resolution.
@@ -451,7 +451,7 @@ def _resolve_depends_on(input_dict: Dict[str, Any], resolution_data: dict[str, s
     return input_dict
 
 
-def traverse_dict(input_dict: Dict[str, Any], resolution_data: Dict[str, str]) -> Dict[str, Any]:
+def traverse_dict(input_dict: Dict[str, Any], resolution_data: dict[str, str]) -> Dict[str, Any]:
     """
     Traverse a dictionary to resolve intrinsic functions on every value
 

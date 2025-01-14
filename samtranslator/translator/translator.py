@@ -179,7 +179,7 @@ class Translator:
                 self.redeploy_restapi_parameters["function_names"] = self._get_function_names(
                     resource_dict, intrinsics_resolver
                 )
-                kwargs["redeploy_restapi_parameters"] = self.redeploy_restapi_parameters
+                kwargs["redeploy_restapi_parameters"] = Dict[str, Any](self.redeploy_restapi_parameters)
                 kwargs["shared_api_usage_plan"] = shared_api_usage_plan
                 kwargs["feature_toggle"] = self.feature_toggle
                 kwargs["route53_record_set_groups"] = route53_record_set_groups

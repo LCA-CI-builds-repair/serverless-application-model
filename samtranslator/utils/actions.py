@@ -15,7 +15,7 @@ class Action(ABC):
 
 class ResolveDependsOn(Action):
     DependsOn = "DependsOn"
-    
+
     def __init__(self, resolution_data: Dict[str, str]):
         """
         Initializes ResolveDependsOn. Where data necessary to resolve execute can be provided.
@@ -44,7 +44,9 @@ class ResolveDependsOn(Action):
             # same as the old logical id. (ex LayerName is commonly the old_logical_id)
             if isinstance(template[self.DependsOn], list):
                 for index, value in enumerate(template[self.DependsOn]):
-                    if value == old_logical_id:
+                    if (
+                        value == old_logical_id
+                    ):
                         template[self.DependsOn][index] = changed_logical_id
             elif template[self.DependsOn] == old_logical_id:
                 template[self.DependsOn] = changed_logical_id

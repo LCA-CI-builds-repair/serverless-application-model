@@ -471,7 +471,7 @@ def canHandle(input_dict: Dict[str, Any]) -> bool:
     :param input_dict: the Dictionary that is attempting to be resolved
     :return boolean value of validation attempt
     """
-    return isinstance(input_dict, dict) and "DependsOn" in input_dict
+    return isinstance(input_dict, Dict) and "DependsOn" in input_dict
 
 
 def prepare_plugins(plugins: Optional[List[BasePlugin]], parameters: Optional[Dict[str, Any]] = None) -> SamPlugins:

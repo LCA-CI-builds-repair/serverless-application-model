@@ -15,7 +15,7 @@ class Action(ABC):
 
 class ResolveDependsOn(Action):
     DependsOn = "DependsOn"
-    
+
     def __init__(self, resolution_data: Dict[str, str]):
         """
         Initializes ResolveDependsOn. Where data necessary to resolve execute can be provided.
@@ -32,8 +32,7 @@ class ResolveDependsOn(Action):
         :param resolution_data: Dictionary of the original and changed logical ids
         :return: Modified dictionary with values resolved
         """
-        # Checks if input dict is resolvable
-        if template is None or not self._can_handle_depends_on(input_dict=template):
+        if not (template and self._can_handle_depends_on(input_dict=template)):
             return template
         # Checks if DependsOn is valid
         if not (isinstance(template[self.DependsOn], (list, str))):

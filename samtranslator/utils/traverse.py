@@ -4,9 +4,8 @@ from samtranslator.utils.actions import Action
 
 
 def traverse(
-    input_value: Any,
-    actions: List[Action],
-) -> Any:
+    input_value: Any, actions: List[Action]
+) -> Any:    
     """
     Driver method that performs the actual traversal of input and calls the appropriate `resolver_method` when
     to perform the resolution.
@@ -18,7 +17,7 @@ def traverse(
     Everything else is a leaf node.
 
     :param input_value: Any primitive type  (dict, array, string etc) whose value might contain a changed value
-    :param actions: Method that will be called to actually resolve the function.
+    :param actions: List of actions to perform on the input value.
     :return: Modified `input` with values resolved    
     """
 
@@ -28,15 +27,12 @@ def traverse(
     if isinstance(input_value, dict):
         return _traverse_dict(input_value, actions)
     if isinstance(input_value, list):
-        return _traverse_list(input_value, actions)
-    # We can iterate only over dict or list types. Primitive types are terminals
+        return _traverse_list(input_value, actions) 
 
     return input_value
 
 
-def _traverse_dict(
-    input_dict: Dict[str, Any],
-    actions: List[Action],
+def _traverse_dict(input_dict: Dict[str, Any], actions: List[Action]
 ) -> Any:
     """
     Traverse a dictionary to resolves changed values on every value
@@ -51,9 +47,7 @@ def _traverse_dict(
     return input_dict
 
 
-def _traverse_list(
-    input_list: List[Any],
-    actions: List[Action],
+def _traverse_list(input_list: List[Any], actions: List[Action]
 ) -> Any:
     """
     Traverse a list to resolve changed values on every element

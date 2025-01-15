@@ -399,7 +399,7 @@ class Translator:
         return SamConnector.from_dict(full_connector_logical_id, connector)
 
 
-def traverse_template_depends_on(input_value: Dict[str, Any], resolution_data: Dict[str, str]) -> Dict[str, Any]:
+def traverse_template_depends_on(input_value: Dict[str, Any], resolution_data: dict[str, str]) -> Dict[str, Any]:
     """
     Driver method that performs the actual traversal of input and calls _resolve_depends_on when
     needed to perform the resolution.
@@ -424,7 +424,7 @@ def traverse_template_depends_on(input_value: Dict[str, Any], resolution_data: D
     return input_value
 
 
-def _resolve_depends_on(input_dict: Dict[str, Any], resolution_data: dict[str, str]) -> Dict[str, Any]:
+def _resolve_depends_on(input_dict: Dict[str, Any], resolution_data: Dict[str, str]) -> Dict[str, Any]:
     """
     Resolve DependsOn when logical ids get changed when transforming (ex: AWS::Serverless::LayerVersion)
 

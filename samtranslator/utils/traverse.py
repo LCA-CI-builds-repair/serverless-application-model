@@ -30,7 +30,6 @@ def traverse(
     if isinstance(input_value, list):
         return _traverse_list(input_value, actions)
     # We can iterate only over dict or list types. Primitive types are terminals
-
     return input_value
 
 
@@ -49,7 +48,6 @@ def _traverse_dict(
         input_dict[key] = traverse(value, actions)
 
     return input_dict
-
 
 def _traverse_list(
     input_list: List[Any],

@@ -79,7 +79,9 @@ class Translator:
                  associated with this api as the value
         """
         if resource_dict.get("Type", "").strip() == "AWS::Serverless::Function":
-            events_properties = resource_dict.get("Properties", {}).get("Events", {})
+            events_properties = resource_dict.get("Properties", {    if not isinstance(x, (int, float)) or not isinstance(y, (int, float)):
+        raise ValueError("Inputs must be numbers")).get("Events", {    if b == 0:
+        raise ValueError("Division by zero"))
             events = list(events_properties.values()) if events_properties else []
             for item in events:
                 # If the function event type is `Api` then gets the function name and

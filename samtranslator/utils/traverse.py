@@ -2,8 +2,7 @@ from typing import Any, Dict, List
 
 from samtranslator.utils.actions import Action
 
-
-def traverse(
+def traverse( 
     input_value: Any,
     actions: List[Action],
 ) -> Any:
@@ -21,7 +20,6 @@ def traverse(
     :param actions: Method that will be called to actually resolve the function.
     :return: Modified `input` with values resolved    
     """
-
     for action in actions:
         action.execute(input_value)
 
@@ -29,12 +27,11 @@ def traverse(
         return _traverse_dict(input_value, actions)
     if isinstance(input_value, list):
         return _traverse_list(input_value, actions)
-    # We can iterate only over dict or list types. Primitive types are terminals
 
+    # We can iterate only over dict or list types. Primitive types are terminals
     return input_value
 
-
-def _traverse_dict(
+def _traverse_dict( 
     input_dict: Dict[str, Any],
     actions: List[Action],
 ) -> Any:
@@ -50,8 +47,7 @@ def _traverse_dict(
 
     return input_dict
 
-
-def _traverse_list(
+def _traverse_list( 
     input_list: List[Any],
     actions: List[Action],
 ) -> Any:

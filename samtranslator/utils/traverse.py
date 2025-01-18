@@ -3,10 +3,7 @@ from typing import Any, Dict, List
 from samtranslator.utils.actions import Action
 
 
-def traverse(
-    input_value: Any,
-    actions: List[Action],
-) -> Any:
+def traverse(input_value: Any, actions: List[Action]) -> Any:
     """
     Driver method that performs the actual traversal of input and calls the appropriate `resolver_method` when
     to perform the resolution.
@@ -19,7 +16,7 @@ def traverse(
 
     :param input_value: Any primitive type  (dict, array, string etc) whose value might contain a changed value
     :param actions: Method that will be called to actually resolve the function.
-    :return: Modified `input` with values resolved    
+    :return: Modified `input` with values resolved
     """
 
     for action in actions:
@@ -34,10 +31,7 @@ def traverse(
     return input_value
 
 
-def _traverse_dict(
-    input_dict: Dict[str, Any],
-    actions: List[Action],
-) -> Any:
+def _traverse_dict(input_dict: Dict[str, Any], actions: List[Action]) -> Any:
     """
     Traverse a dictionary to resolves changed values on every value
 
@@ -51,10 +45,7 @@ def _traverse_dict(
     return input_dict
 
 
-def _traverse_list(
-    input_list: List[Any],
-    actions: List[Action],
-) -> Any:
+def _traverse_list(input_list: List[Any], actions: List[Action]) -> Any:
     """
     Traverse a list to resolve changed values on every element
 

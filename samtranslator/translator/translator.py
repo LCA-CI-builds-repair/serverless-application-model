@@ -407,7 +407,7 @@ def traverse_template_depends_on(input_value: Dict[str, Any], resolution_data: D
     :param resolution_data: Data that will help with resolution i.e. old and new logical ids after transformation
     :return: Modified `input` with DependsOn resolved
     """
-    if len(resolution_data) == 0:
+    if not resolution_data:
         return input_value
 
         #

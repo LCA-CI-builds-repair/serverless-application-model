@@ -5,7 +5,7 @@ from typing import Any, Dict
 class Action(ABC):
     """
     Base class for Resolver function actions. Each Resolver function must subclass this,
-    override the , and provide a execute() method
+    override the execute() method
     """
 
     @abstractmethod
@@ -18,7 +18,7 @@ class ResolveDependsOn(Action):
     
     def __init__(self, resolution_data: Dict[str, str]):
         """
-        Initializes ResolveDependsOn. Where data necessary to resolve execute can be provided.
+        Initializes ResolveDependsOn. Data necessary to resolve execute can be provided.
 
         :param resolution_data: Extra data necessary to resolve execute properly.
         """

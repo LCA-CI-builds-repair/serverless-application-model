@@ -11,10 +11,10 @@ def traverse(
     Driver method that performs the actual traversal of input and calls the appropriate `resolver_method` when
     to perform the resolution.
 
-    Traversal Algorithm:
+    Traversal algorithm:
 
-    Imagine the input dictionary/list as a tree. We are doing a Pre-Order tree traversal here where we first
-    process the root node before going to its children. Dict and Lists are the only two iterable nodes.
+    Imagine the input dictionary/list as a tree. We are doing a pre-order tree traversal here, where we first
+    process the root node before going to its children. Dictionaries and lists are the only two iterable nodes.
     Everything else is a leaf node.
 
     :param input_value: Any primitive type  (dict, array, string etc) whose value might contain a changed value

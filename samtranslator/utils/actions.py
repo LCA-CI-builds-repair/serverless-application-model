@@ -51,10 +51,4 @@ class ResolveDependsOn(Action):
         return template
 
     def _can_handle_depends_on(self, input_dict: Dict[str, Any]) -> bool:
-        """
-        Checks if the input dictionary is of length one and contains "DependsOn"
-
-        :param input_dict: the Dictionary that is attempting to be resolved
-        :return boolean value of validation attempt
-        """
         return isinstance(input_dict, dict) and self.DependsOn in input_dict

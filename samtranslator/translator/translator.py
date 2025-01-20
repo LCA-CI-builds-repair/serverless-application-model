@@ -71,7 +71,7 @@ class Translator:
 
     def _get_function_names(
         self, resource_dict: Dict[str, Any], intrinsics_resolver: IntrinsicsResolver
-    ) -> Dict[str, str]:
+    ) -> typing.Dict[str, str]:
         """
         :param resource_dict: AWS::Serverless::Function resource is provided as input
         :param intrinsics_resolver: to resolve intrinsics for function_name

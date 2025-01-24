@@ -17,8 +17,7 @@ class ResolveDependsOn(Action):
     DependsOn = "DependsOn"
     
     def __init__(self, resolution_data: Dict[str, str]):
-        """
-        Initializes ResolveDependsOn. Where data necessary to resolve execute can be provided.
+        """Initializes ResolveDependsOn. Where data necessary to resolve execute can be provided.
 
         :param resolution_data: Extra data necessary to resolve execute properly.
         """
